@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   def index
-    render :new
+    redirect_to action: :new
   end
 
   def create
@@ -8,7 +8,8 @@ class EmailsController < ApplicationController
     if email.valid?
       EmailMailer.email(email).deliver_later
     end
-    render :new
+
+    redirect_to action: :new
   end
 
 private
