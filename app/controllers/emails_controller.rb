@@ -6,7 +6,7 @@ class EmailsController < ApplicationController
   def create
     email.attributes = params.require(:email).permit(:to)
     if email.valid?
-      EmailMailer.email(email.to).deliver_later
+      EmailMailer.email(email).deliver_later
     end
     render :new
   end
